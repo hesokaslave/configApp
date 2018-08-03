@@ -44,7 +44,7 @@ module.exports = {
 
   delete : function(req,res){
     const { uuid,env } = req.allParams()
-    Config.destroy({udid,env}).exec((err)=>{
+    Config.destroy({uuid,env}).exec((err)=>{
       if(err) return res.serverError(err)
       return res.ok()
     })
