@@ -17,12 +17,13 @@ module.exports = {
 
   create : function(req,res){
     const { uuid, env, value } = req.allParams()
-    Config.create({ uuid, env, value }).fetch().exec(function(err,conf) {
-      if(err) {
-        if(err.code === 'E_UNIQUE') return res.json({error : 'Already exists'})
-        else return res.serverError(err)
-      }
-      return res.json(conf)
+    Config.find({uuid,env}).exec(function(err,configs){
+      if(err) return res.serverError(err);
+      if(configs.length !== 0 ) return res.json({error : 'Already exists'})
+      Config.create({ uuid, env, value }).fetch().exec(function(err,conf) {
+          if(err) return res.serverError(err)
+          return res.json(conf)
+      })
     })
   },
 
