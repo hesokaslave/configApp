@@ -27,7 +27,8 @@ module.exports = {
             position : $('#lblPosition').text(),
             datePosition : $('#lblDatePosition').text(),
             status : $('#lblsst').text(),
-            posteBudgetaire : $('#lblPosteBudgetaire').text()
+            posteBudgetaire : $('#lblPosteBudgetaire').text(),
+            lastUpdate : $('#lbl_date_mise_a_jour').text(),
         }
         return done(null,result);
     },
@@ -35,7 +36,7 @@ module.exports = {
     connectAndRetreiveSituation : function(username,password,done){
         var request = require('request');
         var j = request.jar();
-        var request = request.defaults({ jar : j }) 
+        var request = request.defaults({ jar : j })
         request('http://application.sante.gov.ma/situation/logon.aspx', function (error, response, html) {
             var $ = require('cheerio').load(html);
             var  viewstat =  $('#__VIEWSTATE').val();

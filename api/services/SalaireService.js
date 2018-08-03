@@ -24,6 +24,7 @@ module.exports = {
             netAnnuel : $('#NetAnnuel').text(),
             position : $('#lblPosSal').text(),
             netMensuel : $('#NetMensuelSal').text(),
+            lastUpdate : $('#lbl_date_mise_a_jour').text(),
         }
         return done(null,result);
     },
@@ -31,7 +32,7 @@ module.exports = {
     connectAndRetreive : function(username,password,done){
         var request = require('request');
         var j = request.jar();
-        var request = request.defaults({ jar : j }) 
+        var request = request.defaults({ jar : j })
         request('http://application.sante.gov.ma/situation/logon.aspx', function (error, response, html) {
             var $ = require('cheerio').load(html);
             var  viewstat =  $('#__VIEWSTATE').val();
@@ -75,7 +76,7 @@ module.exports = {
                         },function(err,response,body3){
                             if(err) return done(err,null)
                             return done(null,body3);
-                        }); 
+                        });
                     });
             });
         });
