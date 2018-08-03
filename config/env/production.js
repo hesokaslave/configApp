@@ -21,7 +21,7 @@
 
 module.exports = {
 
-  port : 80,
+  port : 8080,
   /**************************************************************************
   *                                                                         *
   * Tell Sails what database(s) it should use in production.                *
