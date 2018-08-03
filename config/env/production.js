@@ -21,7 +21,7 @@
 
 module.exports = {
 
-
+  port : 80,
   /**************************************************************************
   *                                                                         *
   * Tell Sails what database(s) it should use in production.                *
@@ -46,8 +46,12 @@ module.exports = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
+
+
     default: {
       adapter: 'sails-mongo',
+      url: "mongodb://hesokaslave:Jadli2468@ds259361.mlab.com:59361/sante",
+
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------

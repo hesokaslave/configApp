@@ -11,6 +11,8 @@
 
 module.exports.http = {
 
+  trustProxy : true,
+
   /****************************************************************************
   *                                                                           *
   * Sails/Express middleware to run for every HTTP request.                   *
