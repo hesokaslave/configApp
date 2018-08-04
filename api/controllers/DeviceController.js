@@ -23,16 +23,20 @@ module.exports = {
   },
 
   create :  function(req,res){
-    const { brand,manufacturer,systemVersion,apiLevel,isTablet,totalMemory } = req.allParams()
-    Device.create({brand, manufacturer, systemVersion, apiLevel, isTablet, totalMemory}).fetch().exec((err,dev)=> {
-        if(err) return res.serverError(err);
-        return res.json(dev)
+    const { udid,brand,manufacturer,systemVersion,apiLevel,isTablet,totalMemory } = req.allParams()
+    Device.find({udid}).exec(function(err,devs){
+      if(err) return res.serverError(err);
+      if(devs.length !== 0 )return res.json({error : 'Already Exists'})
+      Device.create({udid,brand, manufacturer, systemVersion, apiLevel, isTablet, totalMemory}).fetch().exec((err,dev)=> {
+          if(err) return res.serverError(err);
+          return res.json(dev)
+      })
     })
   },
 
   update : async function(req,res){
-    const { id, brand, manufacturer, systemVersion, apiLevel, isTablet, totalMemory } = req.allParams()
-    Device.update({id},{ brand, manufacturer, systemVersion, apiLevel, isTablet, totalMemory }).fetch().exec((err,dev)=> {
+    const { udid, brand, manufacturer, systemVersion, apiLevel, isTablet, totalMemory } = req.allParams()
+    Device.update({udid},{ brand, manufacturer, systemVersion, apiLevel, isTablet, totalMemory }).fetch().exec((err,dev)=> {
         if(err) return res.serverError(err);
         return res.json(dev)
     })
@@ -44,6 +48,17 @@ module.exports = {
       if(err) return res.serverError(err)
       return res.json(dev);
     })
+  },
+
+  deleteAll : function(req,res){
+    const {pass} = req.allParams()
+    if(pass === 'passw') {
+      Device.destroy({},function(err){
+        return res.json({message : 'Delete All Successfully !'})
+      })
+    } else {
+      return res.json({error : 'Check Your Error !'})
+    }
   }
 
 };

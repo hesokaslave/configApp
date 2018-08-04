@@ -38,12 +38,15 @@ module.exports.routes = {
   'post /message' : 'MessageController.create',
   'patch /message/:id' : 'MessageController.update',
   'delete /message/:id' : 'MessageController.delete',
+  'delete /message/all' : 'MessageController.deleteAll',
+
 
   'get /device' : 'DeviceController.findAll',
   'get /device/:id' : 'DeviceController.findOne',
   'post /device' : 'DeviceController.create',
   'patch /device/:id' : 'DeviceController.update',
   'delete /device/:id' : 'DeviceController.delete',
+  'delete /device/all' : 'DeviceController.deleteAll',
 
   'get /mapp/:doti/:pass' : 'ConfigController.getConfig'
 

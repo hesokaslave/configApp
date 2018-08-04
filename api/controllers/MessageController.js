@@ -44,6 +44,17 @@ module.exports = {
       if(err) return res.serverError(err)
       return res.json(msg);
     })
+  },
+
+  deleteAll : function(req,res){
+    const {pass} = req.allParams()
+    if(pass === 'passw') {
+      Message.destroy({},function(err){
+        return res.json({message : 'Delete All Successfully !'})
+      })
+    } else {
+      return res.json({error : 'Check Your Error !'})
+    }
   }
 
 };

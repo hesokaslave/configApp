@@ -8,6 +8,7 @@
 module.exports = {
 
   attributes: {
+    udid : { type: 'string', unique : true },
     brand : { type : 'string' },
     isTablet : { type : 'boolean' },
     totalMemory : { type : 'number' },
