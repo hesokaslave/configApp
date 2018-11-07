@@ -10,6 +10,7 @@
     "@sailshq/socket.io-redis": "^5.2.0",
     "async": "2.0.1",
     "cheerio": "^1.0.0-rc.2",
+    "crawler": "^1.1.4",
     "grunt": "^1.0.3",
     "nodemon": "^1.18.3",
     "request": "^2.87.0",
